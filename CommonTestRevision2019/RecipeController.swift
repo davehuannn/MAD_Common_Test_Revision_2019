@@ -27,7 +27,15 @@ class RecipeController
     }
     
     func AddIngredient(recipe:Recipe, ingredient:Ingredient){
-        // codes
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "CDIngredient", in: context)
+        let cdIngredient = NSManagedObject(entity: entity!, insertInto: context)
+        
+        cdIngredient.setValue(recipe.name, forKey: "name")
+        
+        appDelegate.saveContext()
     }
     
     func RetrieveRecipe()->[Recipe]{

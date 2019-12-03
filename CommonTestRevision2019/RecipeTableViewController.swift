@@ -38,7 +38,7 @@ class RecipeTableViewController : UITableViewController
         
         var s:String = ""
         for ing in ingredientList {
-            s += ing.name + ","
+            s += ing.name! + ","
         }
         
         cell.textLabel!.text = recipeList[indexPath.row].name!
